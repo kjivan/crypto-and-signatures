@@ -1,95 +1,8 @@
-## **Cryptography & </br> Digital Signatures**
-Kavi Jivan
-
----
-## Overview
-
-</br>
-
-### Problem
-
-Secure Internet Communication
-</br>
-Secure = Secret and Verified
-
-</br>
-
-#### Solution
-- Simple -> Complex
-- Past -> Present
-- Physical -> Digital
-
-Note:
-Originally I was going to do the presentation with a greater focus on history and time line.
-However, while working on the presentation I thought it would be better to focus on solving the fundamental problem that cryptography and signatures try to solve.
-That fundamental problem being secure Internet communication! For the purposes of this presentation I'm calling secure secret or private and verified as in the identity of the person on the other end of the connection.
-But we are still going to keep some history in there since I want to do a bottom-up building of network security. So we will be working from simple to more complex. This also tends to mean from the past to present
-and physical to digital.
-
----
-## Internet
-
-Internet = Connectivity and Communication
-
-
-![US Night Lights](https://source.unsplash.com/1lfI7wkGWZ4/600x400)
-
-Photo by [NASA](https://unsplash.com/@nasa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/internet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
-
-<!-- HTML comment recognizes as a presenter note per pages. -->
-<!-- You may place multiple comments in a single page. -->
-
-Note:
-Fundamentally the internet is two things the physical connections between devices and the protocols that allow devices to understand each other.
-This allows us and our devices to all communicate with one other.
-
----
-
-## Plain Message over the Internet
-
-</br>
-</br>
-👩‍💻 --------✉️-------> 🏦
-
-Note:
-This is the simplest understanding of the web we can get where we simply send messages from one place to another. In this example from a client of a bank to the bank's website.
-This women behind the laptop is logging onto her bank's website with her password to pay a bill.
-
----
-
-## Hacker in the Network
-
-</br>
-</br>
-👩‍💻 -------✉️🦹-------> 🏦
-
-</br>
-</br>
-
-🦹📩 = 💸
-
-Note:
-So this is where it gets more interesting.  The internet is connected through a network which means it's not going directly from point to point. 
-It's actually hitting other machines on the way to it's destination and the connection could also be shared.
-WiFi is a notorious example of this since WiFi generally not  point to point. We don't typically restrict radio waves and so anyone can listen in 
-on those connections.
-
----
-## Internet Protocol
-
-![Protocol Stack](./OSI_Model_v1.svg)
-
---
-
-Image from [wikipedia](https://en.wikipedia.org/wiki/Protocol_stack)
-
----
-
 ## Cryptography
 
 Cryptography = Secrets
 
-![Whisper Image](https://source.unsplash.com/YLMs82LF6FY/540x360)
+![Whispering](https://source.unsplash.com/YLMs82LF6FY/540x360)
 
 Photo by [Sai De Silva](https://unsplash.com/@scoutthecity?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/secret?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
 
@@ -97,14 +10,18 @@ Photo by [Sai De Silva](https://unsplash.com/@scoutthecity?utm_source=unsplash&a
 
 ## Cryptography Continued
 
-</br></br>
-Cryptography is about secrets. It helps you communicate something that only you and the party that recieves it understands.
-</br></br>
-In the past this might have been military information. Today we want to keep our bank passwords a secret so people don't steal all our money.
 </br>
 
+Cryptography is about **secrets!**
+
+</br>
+
+- Helps you communicate confidentially
+- Nations and Militaries used to use it
+- Today people use it via browsers and servers
+
 Note:
-So, today each of our browsers and servers are doing thousands of encryptions/decryptions a day.
+Now each of our browsers and servers are doing thousands of encryptions/decryptions a day.
 
 ---
 
@@ -184,6 +101,137 @@ Some historians that breaking the Enigma code shortened the war in Europe by as 
 ---
 
 ## Modern Cryptography
-- Data Encryption Standard(DES) 1977 - unclassified, sensitive information
-- Advanced Encryption Standard (AES) 2001 - Current standard globally for transferring sensitive information
+- [Data Encryption Standard(DES)]() 1977 - unclassified, sensitive information
+- [Advanced Encryption Standard(AES)](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf#page=1) 2001 - Current standard globally for transferring sensitive information
 - [Simplified AES](https://www.ime.usp.br/~rt/cranalysis/AESSimplified.pdf) - Variant used for learning
+
+Note: Until the 1960s cryptography was really primarily used by government and more specifically their military.
+However, with the advent of the Internet and the need for communicating securely cryptography entered the public domain.
+
+---
+
+## Computing Details
+
+- data = numbers
+- spreadsheets, images, videos, letters = numbers
+- For example 
+  - Z = 90 = 0x5A
+  - z = 122 = 0x7A
+  - White = 255, 255, 255
+- Hex = 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
+  - A = 10
+  - B = 12
+  - ...
+  - F = 16
+
+Note:
+This means mathematicians can work with these numbers and encrypt anything.
+
+---
+
+## AES Exercise
+
+https://cryptii.com/pipes/text-to-binary
+https://cryptii.com/pipes/aes-encryption
+https://cryptii.com/pipes/hex-to-text
+
+
+**AES-256 CBC Encoded Bytes:**
+
+7a b6 4d 5c c2 3c 2f 58 27 a3 b9 9a 1c 3a ef 5b 94 4c d8 8b a5 b0 56 b6 4e c5 71 86 9d 68 7c f1
+
+
+**Key in Text:**
+
+passwordpasswordpasswordpassword
+
+---
+
+## Hacker in the Network (Recap)
+
+</br>
+</br>
+👩‍💻 -------✉️🦹-------> 🏦
+
+</br>
+</br>
+
+🦹📩 = 💸
+
+---
+
+## Sending key with message 
+
+</br>
+</br>
+👩‍💻 -------🔑🔒🦹-------> 🏦
+
+</br>
+</br>
+
+🦹🔑🔒= 📩
+</br>
+</br>
+🦹📩 = 💸
+
+---
+
+## Pre Shared Key
+
+</br>
+</br>
+👩🔑 <--> 🔑🏦
+</br>
+</br>
+👩‍💻🔑 -------🔒🦹-------> 🔑🏦
+
+</br>
+</br>
+🦹 = 😞
+
+---
+
+## Asymmetric Encryption
+
+</br>
+</br>
+👩‍💻🗝️ <------------------------ 🏦
+</br>
+</br>
+👩‍💻🗝️  -------🔒🦹-------> 🔑🏦
+
+</br>
+</br>
+🗝️ = public key
+</br>
+🔑 = private key
+
+</br>
+</br>
+
+🦹 = 😞
+
+---
+
+## Hacker's new tricks
+
+</br>
+</br>
+👩‍💻🗝️ <------------------------ 🦹🏦
+</br>
+</br>
+👩‍💻🗝️  -------🔒🔑🦹🗝️-------> 🔑🏦
+
+</br>
+</br>
+🗝️ = public key
+</br>
+🔑 = private key
+
+</br>
+</br>
+
+🦹🔑🔒= 📩
+</br>
+</br>
+🦹📩 = 💸
