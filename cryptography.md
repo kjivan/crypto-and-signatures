@@ -6,6 +6,9 @@ Cryptography = Secrets
 
 Photo by [Sai De Silva](https://unsplash.com/@scoutthecity?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/secret?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
 
+Note: So, let's get into fixing our hacker problem. For that we need something called cryptography.
+Fundamentally Cryptography is about keeping secrets or keeping something confidential.
+
 ---
 
 ## Cryptography Continued
@@ -41,9 +44,10 @@ Now each of our browsers and servers are doing thousands of encryptions/decrypti
 Image/example from [wikipedia](https://en.wikipedia.org/wiki/Scytale)
 
 Note:
-Apparently when the Spartan's weren't kicking people into pit's and yelling this is Sparta they were working on some pretty neat cryptography.
-It's believe they may have use this device to encrypt and decrypt messages. Two cylinders/skytales with identical diameters would have to be used.
-One would wrap a piece of leather around the cylinder and then you would write out your message. Then once you unwrapped the leather it was essentially
+So this is the history bit. So, Apparently when the Spartan's weren't kicking people into pit's and yelling this is Sparta 
+they were working on some pretty neat cryptography.  It's believe they may have use this device to encrypt and decrypt messages. 
+Two cylinders/skytales with identical diameters would have to be used. One would wrap a piece of leather around the cylinder 
+and then you would write out your message. Then once you unwrapped the leather it was essentially
 encoded since the leather didn't make sense without decryption. The recipient would use their skytale to quickly decrypt the message. So a couple
 interesting things to note are that nothing in the original message changed. This message has simply been shuffled this is referred to as transposition cipher.
 For those quick to notice patterns will realize that essentially this is taking every fifth letter/character.
@@ -64,8 +68,12 @@ ROT1
 So CAT -> DBU -> CAT
 
 Note:
-If you have ever heard of a cipher or made one this one is likely it. This involves remapping letters by rotating the alphabet by a certain number of letters.
-This is what is referred to as substitution cipher since your substituting notice unlike the previous it's possible none of the original message still exists.
+If you have ever heard of a cipher or made one this one is likely it.
+This involves remapping letters by rotating the alphabet by a certain number of letters.
+This is what is referred to as substitution cipher since your substituting notice unlike the previous
+it's possible none of the original message still exists. This cipher was used by Caesar as you can imagine.
+He apparently used to discuss love interests according to some historical writings. This is kind of interesting
+because this is probably one of the first personal use cases of cryptography.
 
 ---
 
@@ -82,6 +90,8 @@ The most popular version is ROT13 which rotates the letters by 13. The advantage
 These algorithms are very easy to break and should not be used for anything that really needs to be kept secret. However, they are useful for an easy introduction into encryption.
 Historians believe at the time they were unbreakable.
 
+**Menti exercise**
+
 ---
 
 ## Notable Events</br></br>
@@ -94,8 +104,9 @@ Note:
 There was continuous developments in cryptography however I want to just focus on the core concepts which were captured by the easier to understand examples.
 However, I will just briefly describe some of the other events.
 Frequency analysis provides valuable insights into breaking ciphers.
-Decoding the Zimmermann Telegram helped to shape American public opinion during WW1 motivitating the US to enter.
-Some historians that breaking the Enigma code shortened the war in Europe by as many as two to four years.(https://www.bbc.com/news/technology-18419691)
+If you actually analyze a language you can get a frequency of letters and break a cipher.
+Decoding the Zimmermann Telegram helped to shape American public opinion during WW1.
+Some historians believe that breaking the Enigma code shortened the war in Europe by as many as two to four years.(https://www.bbc.com/news/technology-18419691)
 
 ---
 
@@ -104,7 +115,7 @@ Some historians that breaking the Enigma code shortened the war in Europe by as 
 - [Advanced Encryption Standard(AES)](https://csrc.nist.gov/csrc/media/publications/fips/197/final/documents/fips-197.pdf) 2001 - Current standard globally for transferring sensitive information
 - [Simplified AES](https://www.ime.usp.br/~rt/cranalysis/AESSimplified.pdf) - Variant used for learning
 
-Note: Until the 1960s cryptography was really primarily used by government and more specifically their military.
+Note: Until the 1960s cryptography was really primarily used by government and usually by the military.
 However, with the advent of the Internet and the need for communicating securely cryptography entered the public domain.
 
 ---
@@ -112,7 +123,7 @@ However, with the advent of the Internet and the need for communicating securely
 ## Computing Details
 
 - data = numbers
-- spreadsheets, images, videos, letters = numbers
+- letters, images, videos, spreadsheets = numbers
 - For example 
   - Z = 90 = 0x5A
   - 2 = 50 = 0x32
@@ -122,6 +133,11 @@ However, with the advent of the Internet and the need for communicating securely
   - F = 16
 
 Note:
+So I really wanted to keep as much technical detail out as possible, but unfortunately for the cool exercise coming up 
+we are going to have to roll up our sleeves and dig into some of the nitty gritty bits.
+So all data in computing is actually represented as numbers.
+letters, images, videos, spreadsheets are actually all stored as numbers.
+For example... look at slide.
 Go over numbers and hex. Hex is nice way to represent machine values since they are 16 is a base 2 number.
 This means mathematicians can work with these numbers and encrypt anything.
 
@@ -129,9 +145,11 @@ This means mathematicians can work with these numbers and encrypt anything.
 
 ## AES Encryption Example
 
-1. Convert 'passwordpassword' to bytes
+1. Convert 'passwordpasswordpasswordpassword' to bytes
 1. https://cryptii.com/
 1. Encrypt 'super secret message' to AES bytes
+1. https://cryptii.com/pipes/aes-encryption
+1. Decrypt AES Bytes
 1. https://cryptii.com/pipes/aes-encryption
 
 ---
@@ -154,6 +172,9 @@ echo -n "passwordpassword" | xxd -p
 openssl enc -aes-128-cbc -d -in <encrypted_data> -K <key> -iv <iv>
 ```
 
+Note:
+**Menti exercise**
+
 ---
 
 ## Hacker in the Network (Recap)
@@ -167,7 +188,8 @@ openssl enc -aes-128-cbc -d -in <encrypted_data> -K <key> -iv <iv>
 
 🦹📩 = 💸
 
-Note: You may have forgotten about our main goal, but I didn't. So last we left off off in our example the hacker was getting our message just by listening to messages on the wire.
+Note: You may have forgotten about our main goal, but I didn't. 
+So last we left off off in our example the hacker was getting our message just by listening to messages on the wire.
 Well, now we have the power of cryptography so let's show the hacker how it's done.
 
 ---
@@ -186,10 +208,13 @@ Well, now we have the power of cryptography so let's show the hacker how it's do
 </br>
 🦹📩 = 💸
 
-Note: I know this is silly, but I just want to make it clear that just encrypting data doesn't make it protected.
+Note: Go through slide.
+Well that didn't go quite right and it was kind silly. This just kind of drives home the point that just encrypting isn't enough.
 Protecting your key is critical just like protecting the key to your house. So in this situation we sent the key
 over the wire and now the hacker can simply take the encrypted message(lock) and the key and decrypt the message.
 The hacker wins again....
+
+Well, let's try something different.
 
 ---
 
@@ -208,7 +233,7 @@ The hacker wins again....
 
 Note: Ah we wised up after losing an unmentioned amount of money. We are actually going to physically go to the bank and
 exchange our key so we can then use that key to encrypt messages which the bank will be able to decrypt. Now this will
-work, but there are some drawbacks we had to go to the back to exchange keys and if the key is comprimised we will have
+work, but there are some drawbacks we had to go to the back to exchange keys and if the key is compromised we will have
 to go exchange keys again.
 
 Huzzah our first win!!!
@@ -228,9 +253,11 @@ Huzzah our first win!!!
  🗝️ = encrypt 🔑 = decrypt
 
 - [RSA](https://people.csail.mit.edu/rivest/Rsapaper.pdf) 1977 - Public Key Cryptography / Strong Encryption
+- [KidRSA](http://math.uttyler.edu/sjgraves/aam/sec-PublicKey-KidRSA.html) - Simplified RSA for learning
 
-Note: So far we have primarily discussed what is now called symmetric encryption where the keys for encrypting and decrypting are the same.
-
+Note:
+So far we have primarily discussed what is now called symmetric encryption where the keys for encrypting and decrypting are the same.
+Go over slide
 
 ---
 
@@ -247,9 +274,12 @@ Note: So far we have primarily discussed what is now called symmetric encryption
 | encrypted = 10 	| message = 5     	|
 
 Note: So while researching cryptography and pki I came across this quote I really liked.
+**Read slide**
 So why is this whole public key cryptography the best thing since sliced bread. I'm going to try to explain
 but, it's hard. Some of the magic lies in the complexity. Anyhow as you remember all things are numbers.
-So we are just going to work with simple numbers. Imagine the plus operation is not easily reversed. In actual RSA you
+So we are just going to work with simple numbers. 
+**Read slide**
+Imagine the plus operation is not easily reversed. In actual RSA you
 would need to have quantum computer to reverse the process in a reasonable amount of time.
 
 ---
@@ -273,6 +303,10 @@ would need to have quantum computer to reverse the process in a reasonable amoun
 </br>
 
 🦹 = 😞
+
+Note:
+So let's try to put this new fancy asymmetric encryption to use.
+**Go through slide.**
 
 ---
 
@@ -298,3 +332,6 @@ would need to have quantum computer to reverse the process in a reasonable amoun
 </br>
 </br>
 🦹📩 = 💸
+
+Note:
+Hacker is not 
