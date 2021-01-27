@@ -2,7 +2,7 @@
 
 Cryptography = Secrets
 
-![Whispering](https://source.unsplash.com/YLMs82LF6FY/540x360)
+![Whispering](images/whisper.jpg)
 
 Photo by [Sai De Silva](https://unsplash.com/@scoutthecity?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/secret?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText)
 
@@ -27,7 +27,7 @@ Now each of our browsers and servers are doing thousands of encryptions/decrypti
 
 ## Scytale (500-401 BC)
 
-![Cylinder Cryptography Device](https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Skytale.png/400px-Skytale.png)
+![Cylinder Cryptography Device](images/scytale.png)
 
 "I am hurt very badly help" -> "Iryyatbhmvaehedlurlp"
 
@@ -72,10 +72,10 @@ This is what is referred to as substitution cipher since your substituting notic
 ## ROT13 Caesar Cipher
 
 
-![ROT13](https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/ROT13.png/640px-ROT13.png)
+![ROT13](images/rot13.png)
 
 
-Image/example from [wikipedia](https://en.wikipedia.org/wiki/Scytale)
+Image/example from [wikipedia](https://en.wikipedia.org/wiki/ROT13)
 
 Note:
 The most popular version is ROT13 which rotates the letters by 13. The advantage of this is that since the alphabet is 26 letters the same algorithm/table can be used to encrypt and decrypt.

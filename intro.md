@@ -33,7 +33,7 @@ and physical to digital.
 Internet = Connectivity and Communication
 
 
-![US Night Lights](https://source.unsplash.com/1lfI7wkGWZ4/600x400)
+![US Night Lights](images/light.jpg)
 
 Photo by [NASA](https://unsplash.com/@nasa?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText) on [Unsplash](https://unsplash.com/s/photos/internet?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText)
 
@@ -78,7 +78,7 @@ on those connections.
 ---
 ## Internet Stack
 
-![Protocol Stack](https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg)
+![Protocol Stack](images/stack.svg)
 
 --
 
