@@ -115,15 +115,14 @@ However, with the advent of the Internet and the need for communicating securely
 - spreadsheets, images, videos, letters = numbers
 - For example 
   - Z = 90 = 0x5A
-  - z = 122 = 0x7A
+  - 2 = 50 = 0x32
   - White = 255, 255, 255
 - Hex = 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
   - A = 10
-  - B = 12
-  - ...
   - F = 16
 
 Note:
+Go over numbers and hex. Hex is nice way to represent machine values since they are 16 is a base 2 number.
 This means mathematicians can work with these numbers and encrypt anything.
 
 ---

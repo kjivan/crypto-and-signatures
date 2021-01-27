@@ -78,7 +78,7 @@ on those connections.
 ---
 ## Internet Stack
 
-![Protocol Stack](./OSI_Model_v1.svg)
+![Protocol Stack](https://upload.wikimedia.org/wikipedia/commons/8/8d/OSI_Model_v1.svg)
 
 --
 
