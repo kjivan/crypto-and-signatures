@@ -82,7 +82,6 @@ The most popular version is ROT13 which rotates the letters by 13. The advantage
 These algorithms are very easy to break and should not be used for anything that really needs to be kept secret. However, they are useful for an easy introduction into encryption.
 Historians believe at the time they were unbreakable.
 
-
 ---
 
 ## Notable Events</br></br>
@@ -101,8 +100,8 @@ Some historians that breaking the Enigma code shortened the war in Europe by as 
 ---
 
 ## Modern Cryptography
-- [Data Encryption Standard(DES)]() 1977 - unclassified, sensitive information
-- [Advanced Encryption Standard(AES)](https://csrc.nist.gov/csrc/media/projects/cryptographic-standards-and-guidelines/documents/aes-development/rijndael-ammended.pdf#page=1) 2001 - Current standard globally for transferring sensitive information
+- [Data Encryption Standard(DES)](https://csrc.nist.gov/csrc/media/publications/fips/46/3/archive/1999-10-25/documents/fips46-3.pdf) 1977 - unclassified, sensitive information
+- [Advanced Encryption Standard(AES)](https://csrc.nist.gov/csrc/media/publications/fips/197/final/documents/fips-197.pdf) 2001 - Current standard globally for transferring sensitive information
 - [Simplified AES](https://www.ime.usp.br/~rt/cranalysis/AESSimplified.pdf) - Variant used for learning
 
 Note: Until the 1960s cryptography was really primarily used by government and more specifically their military.
@@ -129,21 +128,32 @@ This means mathematicians can work with these numbers and encrypt anything.
 
 ---
 
+## AES Encryption Example
+
+1. Convert 'passwordpassword' to bytes
+1. https://cryptii.com/
+1. Encrypt 'super secret message' to AES bytes
+1. https://cryptii.com/pipes/aes-encryption
+
+---
+
 ## AES Exercise
 
-https://cryptii.com/pipes/text-to-binary
-https://cryptii.com/pipes/aes-encryption
-https://cryptii.com/pipes/hex-to-text
+- **AES-128 CBC Encoded Bytes:**
+4c 6b 54 45 f3 e6 88 f9 c5 56 c9 e4 5c b0 68 92
+- **Key(text):**
+passwordpassword
+- **IV:**
+00 01 02 03 04 05 06 07 08 09 0a 0b 0c 0d 0e 0f
 
+- https://cryptii.com/
+- https://cryptii.com/pipes/aes-encryption
 
-**AES-256 CBC Encoded Bytes:**
-
-7a b6 4d 5c c2 3c 2f 58 27 a3 b9 9a 1c 3a ef 5b 94 4c d8 8b a5 b0 56 b6 4e c5 71 86 9d 68 7c f1
-
-
-**Key in Text:**
-
-passwordpasswordpasswordpassword
+```
+echo -n "00000000: 4c6b 5445 f3e6 88f9 c556 c9e4 5cb0 6892" | xxd -r > encrypted_data
+echo -n "passwordpassword" | xxd -p
+openssl enc -aes-128-cbc -d -in <encrypted_data> -K <key> -iv <iv>
+```
 
 ---
 
@@ -157,6 +167,9 @@ passwordpasswordpasswordpassword
 </br>
 
 🦹📩 = 💸
+
+Note: You may have forgotten about our main goal, but I didn't. So last we left off off in our example the hacker was getting our message just by listening to messages on the wire.
+Well, now we have the power of cryptography so let's show the hacker how it's done.
 
 ---
 
@@ -174,6 +187,11 @@ passwordpasswordpasswordpassword
 </br>
 🦹📩 = 💸
 
+Note: I know this is silly, but I just want to make it clear that just encrypting data doesn't make it protected.
+Protecting your key is critical just like protecting the key to your house. So in this situation we sent the key
+over the wire and now the hacker can simply take the encrypted message(lock) and the key and decrypt the message.
+The hacker wins again....
+
 ---
 
 ## Pre Shared Key
@@ -188,6 +206,52 @@ passwordpasswordpasswordpassword
 </br>
 </br>
 🦹 = 😞
+
+Note: Ah we wised up after losing an unmentioned amount of money. We are actually going to physically go to the bank and
+exchange our key so we can then use that key to encrypt messages which the bank will be able to decrypt. Now this will
+work, but there are some drawbacks we had to go to the back to exchange keys and if the key is comprimised we will have
+to go exchange keys again.
+
+Huzzah our first win!!!
+
+---
+
+## Asymmetric Encryption
+
+- Symmetric Encryption = 1 key used by both parties
+
+👨🔑 <-----🔒------> 🔑👨
+
+- Asymmetric Encryption = 2 different keys
+
+👨🗝️  -----🔒------> 🔑👨
+
+ 🗝️ = encrypt 🔑 = decrypt
+
+- [RSA](https://people.csail.mit.edu/rivest/Rsapaper.pdf) 1977 - Public Key Cryptography / Strong Encryption
+
+Note: So far we have primarily discussed what is now called symmetric encryption where the keys for encrypting and decrypting are the same.
+
+
+---
+
+## Asymmetric Encryption Cont
+
+> Public key cryptography is a magical gift from mathematics to computer science
+>   [everything-pki](https://smallstep.com/blog/everything-pki/)
+
+| Encrypt        	| Decrypt         	|
+|----------------	|-----------------	|
+| message = 5    	| encrypted = 10  	|
+| encrypt = +    	| decrypt = /     	|
+| public key = 5 	| private key = 2 	|
+| encrypted = 10 	| message = 5     	|
+
+Note: So while researching cryptography and pki I came across this quote I really liked.
+So why is this whole public key cryptography the best thing since sliced bread. I'm going to try to explain
+but, it's hard. Some of the magic lies in the complexity. Anyhow as you remember all things are numbers.
+So we are just going to work with simple numbers. Imagine the plus operation is not easily reversed. In actual RSA you
+would need to have quantum computer to reverse the process in a reasonable amount of time.
 
 ---
 
