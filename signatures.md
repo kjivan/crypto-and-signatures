@@ -307,7 +307,7 @@ openssl s_client -connect google.com:443 2>&1 < /dev/null
 </br>
 
 1. Find jdk and inspect cacerts/truststore
-2. Use keytool to add cert approriate CA Cert ideally
+2. Use keytool to add CA Cert
 
 </br>
 </br>
@@ -316,13 +316,24 @@ openssl s_client -connect google.com:443 2>&1 < /dev/null
 
 ## Browser failing to connect to site
 
-You will need to update the server cert
+May need to add a cert to your system trust store
+- Keychain in MacOS
+- Cert Manager in Windows
+- Browser or other in Linux
 
-The server cert
-- never had a valid cert
-- may have expired
-- may be revoked
-- may not present inetermediate certs
+---
+
+## Possible Cert Issues
+
+- Server Side
+  - Wrong Cert (self-signed cert?)
+  - Expired Cert
+  - Revoked Cert
+  - Missing intermediate certs
+- Client Side
+  - Missing Root Cert
+  - Root Cert Expired
+
 
 ---
 
