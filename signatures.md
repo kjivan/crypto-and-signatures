@@ -47,7 +47,7 @@ Secure Internet Communication
 
 ---
 
-## Menti First Question
+## Menti Question 1
 
 ---
 ## Asymmetric Encryption
@@ -76,9 +76,9 @@ Secure Internet Communication
 
 👩‍💻🗝️ <--------------------------- 🏦
 </br>
-👩‍💻🔩  -------🔒🔩🦹-------> 🔑🏦
+👩‍💻🔩  ---------🔒🔩--------> 🔑🏦
 </br>
-👩‍💻🔩 <---------🦹----------> 🔩🏦
+👩‍💻🔩 <---------------------> 🔩🏦
 
 </br>
 🗝️ = public key
@@ -91,13 +91,13 @@ Secure Internet Communication
 
 ---
 
-## Asymmetric Encryption with key Exchange
+## Asymmetric Encryption Key Exchange with Hacker
 
-👩‍💻🗝️ <--------------------------- 🏦
 </br>
-👩‍💻🔩  -------🔒🔩-------> 🔑🏦
+👩‍💻🗝️ <------------🔑🦹🗝️-------------🔑🏦
 </br>
-👩‍💻🔩 <-------------------> 🔩🏦
+👩‍💻🔩  -------🔒🔩🦹-------> 🔑🏦
+</br>
 
 </br>
 🗝️ = public key
@@ -131,7 +131,7 @@ Photo by [Lewis Keegan](https://unsplash.com/@skillscouter?utm_source=unsplash&u
 
 - 3000BC-Present - Seals
 
-- 1677 - State of Frauds act
+- 1677 - State of Frauds Act
 
 - 1776 - John Hancock
 
@@ -140,49 +140,49 @@ Photo by [Lewis Keegan](https://unsplash.com/@skillscouter?utm_source=unsplash&u
 
 ---
 
-## Menti Second Question
-
----
-
 ## Signatures Properties
 
-Signatures are 
-- Easy to Verify
-- Hard to Reproduce
-- Endorse something
+</br>
+
+- Anyone can verify
+- Only correct person can create
+
+</br>
+</br>
 
 One Way Transaction
 
----
-
-## Signatures and Asymmetric Encryption
-
-- Verify identity via encryption
-- I have the key but you have to send me a non-reproducible lock
-- key = public key
-- non-reproducible lock = encrypted hash (private key)
+- Symmetric = 2 way
+- Asymmetric = 1 way
 
 
 ---
-## Asymmetric Encryption
 
-</br>
-</br>
-👩‍💻🗝️ <------------------------ 🏦
-</br>
-</br>
-👩‍💻🗝️  -------🔒🦹-------> 🔑🏦
+## Asymmetric Revisted
 
-</br>
-</br>
-🗝️ = public key
-</br>
-🔑 = private key
+
+Encryption
+- Public Key - Anyone can encrypt
+- Private Key - Only correct person can decrypt
 
 </br>
 </br>
 
-🦹 = 😞
+Signatures
+- Public Key - Anyone can decrypt
+- Private Key - Only correct person can encrypt
+
+---
+## Signatures
+
+How do digital signatures work?
+
+- Inventory PDF needs to be signed
+- Complete filling out the PDF
+- Hash the PDF
+- hash = shorter string that represents the whole document
+- Encrypt hash using PIV private key
+- Attach encrypted hash to document
 
 ---
 ## Verify Identity
@@ -224,28 +224,106 @@ One Way Transaction
 - 🔏 = message signed with private key
 
 ---
+
+## How do you establish trust?
+
+- Get every websites' public key before hand
+- Not Scalable
+- You would need 1.3 Billion keys
+- Expiration issues
+- Use a smaller set of public keys to verify signatures
+
+---
+
 ## Starting Point of Trust
 
 - You have to trust something as a starting point
 - Lacking a trust anchor creates a recursive issue
-- Bob -> Alice -> Kevin
-- Kevin is only as Trust worthy as Bob
+
+</br>
+</br>
+
+- Say Kevin asks to loan money
+- Alice vouches for Kevin but we don't know Alice
+- Bill vouches for Alice and we trust Bill
 
 ---
 
-## Public Key Infrastructure
+## Certificates
 
-- You have to trust something as a starting point
-- We will use certificates to build trust and disperse keys
-- 2 birds with one stone
-- Certificates contain a public Key and a Signature
+Actually Contain two things
+- Public Key
+  - encrypt keys for key exchange
+  - verify signatures
+- Signature
+
+- Root Certs are self-signed nothing else can vouch for them
 
 ---
-
 ## Trust Chain
 
-Draw diagram
-- How do you know cert is trust worthy?
-- That cert will be signed by another cert
-- And so on until you either have a cert in the chain you trust or do not
+![Trust Chain Tree](images/trust-chain.png)
+
+---
+
+## Menti Question 2
+
+---
+## Public Key Infrastructure(PKI)
+
+</br>
+</br>
+
+- Composed of Certificates
+- Trust Root Certificates
+- Installed with your system or browser
+- All other certificates signatures are verified
+- Typically used with Secure Socket Layer(SSL)
+
+---
+
+## Demo Certificates
+
+Go to the browser and inspect google certificates
+
+CLI
+```
+openssl s_client -connect google.com:443 2>&1 < /dev/null
+```
+
+---
+
+## Java Application Cert Error
+
+- PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
+
+</br>
+</br>
+
+1. Find jdk and inspect cacerts/truststore
+2. Use keytool to add cert approriate CA Cert ideally
+
+</br>
+</br>
+
+---
+
+## Browser failing to connect to site
+
+You will need to update the server cert
+
+The server cert
+- never had a valid cert
+- may have expired
+- may be revoked
+- may not present inetermediate certs
+
+---
+
+## References
+
+- Keytool Reference
+- https://gist.github.com/kjivan/c0acb5b5e6f7c01692ac4cef9bb74b32
+- OpenSSL Reference
+- https://gist.github.com/kjivan/7cb253cc08687b4daf6d2d66406b572a
 
