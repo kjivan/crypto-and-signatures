@@ -130,7 +130,7 @@ However, with the advent of the Internet and the need for communicating securely
   - White = 255, 255, 255
 - Hex = 0,1,2,3,4,5,6,7,8,9,A,B,C,D,E,F
   - A = 10
-  - F = 16
+  - F = 15
 
 Note:
 So I really wanted to keep as much technical detail out as possible, but unfortunately for the cool exercise coming up 
